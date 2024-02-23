@@ -6,11 +6,8 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\IntensionRequest;
-use App\Http\Requests\ThemeRequest;
 use App\Http\Resources\IntensionResource;
-use App\Http\Resources\ThemeResource;
 use App\Models\Intensions;
-use App\Models\Theme;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

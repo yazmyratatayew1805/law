@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use Cyberbrains\Filemanager\Controllers\FileController;
 use App\Http\Controllers\API\IntensionController;
+use App\Http\Controllers\API\BeliefController;
 
 Route::prefix('v1')->group(function () {
 
@@ -28,6 +29,12 @@ Route::prefix('v1')->group(function () {
             Route::put('intension/{id}/update', [IntensionController::class, 'update']);
             Route::delete('intension/{id}/delete', [IntensionController::class, 'delete']);
 
+
+            // belief crud
+            Route::get('belief/index', [BeliefController::class, 'index']);
+            Route::post('belief/create', [BeliefController::class, 'create']);
+            Route::put('belief/{id}/update', [BeliefController::class, 'update']);
+            Route::delete('belief/{id}/delete', [BeliefController::class, 'delete']);
 
 
 
