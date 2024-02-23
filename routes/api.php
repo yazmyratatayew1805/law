@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use Cyberbrains\Filemanager\Controllers\FileController;
+use App\Http\Controllers\API\IntensionController;
 
 Route::prefix('v1')->group(function () {
 
@@ -19,6 +20,16 @@ Route::prefix('v1')->group(function () {
             Route::put('update-profile', 'updateProfile');
             Route::delete('delete-account', 'deleteAccount');
         });
+
+
+            // intension crud
+            Route::get('intension/index', [IntensionController::class, 'index']);
+            Route::post('intension/create', [IntensionController::class, 'create']);
+            Route::put('intension/{id}/update', [IntensionController::class, 'update']);
+            Route::delete('intension/{id}/delete', [IntensionController::class, 'delete']);
+
+
+
 
     });
 
