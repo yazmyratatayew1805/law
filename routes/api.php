@@ -9,6 +9,7 @@ use App\Http\Controllers\API\BeliefController;
 use App\Http\Controllers\API\ProgramController;
 use App\Http\Controllers\API\CurrencyController;
 use App\Http\Controllers\API\BankController;
+use App\Http\Controllers\API\GptController;
 
 Route::prefix('v1')->group(function () {
 
@@ -57,6 +58,7 @@ Route::prefix('v1')->group(function () {
             Route::put('bank/{id}/update', [BankController::class, 'update']);
             Route::delete('bank/{id}/delete', [BankController::class, 'delete']);
 
+            Route::post('chat/gpt', [GptController::class, 'chat']);
 
 
 
