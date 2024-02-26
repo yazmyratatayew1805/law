@@ -11,6 +11,9 @@ use App\Http\Controllers\API\CurrencyController;
 use App\Http\Controllers\API\BankController;
 use App\Http\Controllers\API\GptController;
 
+use App\Notifications\PushNotification;
+
+
 Route::prefix('v1')->group(function () {
 
     Route::controller(RegisterController::class)->group(function(){
@@ -24,6 +27,13 @@ Route::prefix('v1')->group(function () {
             Route::post('logout', 'logout');
             Route::put('update-profile', 'updateProfile');
             Route::delete('delete-account', 'deleteAccount');
+
+            Route::get('/send-notification', function () {
+                $user = auth()->user(); // Assuming you have a user model and authentication system
+                $user->notify(new PushNotification());
+                return "Notification sent!";
+            });
+
         });
 
 
