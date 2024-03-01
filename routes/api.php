@@ -26,6 +26,7 @@ Route::prefix('v1')->group(function () {
         Route::middleware('auth:sanctum')->group( function () {
             Route::post('logout', 'logout');
             Route::put('update-profile', 'updateProfile');
+            Route::get('get-user', 'getUser');
             Route::delete('delete-account', 'deleteAccount');
 
             Route::get('/send-notification', function () {

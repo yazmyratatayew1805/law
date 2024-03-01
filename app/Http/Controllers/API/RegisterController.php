@@ -7,6 +7,8 @@ use App\Http\Requests\CheckCodeRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\SendCodeRequest;
 use App\Http\Resources\ConfectionerResource;
+use App\Http\Resources\ProfileResource;
+use App\Http\Resources\ProgramResource;
 use App\Http\Resources\UserResource;
 use App\Mail\VerificationMail;
 use App\Models\Confectioner;
@@ -145,6 +147,13 @@ class RegisterController extends BaseController
         $user->delete();
         return $this->sendResponse(UserResource::make($user), 'You have been successfully deleted');
     }
+
+    public function getUser(): JsonResponse
+    {
+        $user = auth()->user();
+        return $this->sendResponse(ProfileResource::make($user), 'Successfully');
+    }
+
 
 
 
