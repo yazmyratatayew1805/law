@@ -9,6 +9,7 @@ use App\Http\Resources\ProgramResource;
 use App\Models\Program;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends BaseController
 {
@@ -21,6 +22,7 @@ class ProgramController extends BaseController
     public function create(ProgramRequest $request): JsonResponse
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $program = Program::create($data);
         return $this->sendResponse(ProgramResource::make($program), 'Successfully.');
     }
@@ -30,6 +32,7 @@ class ProgramController extends BaseController
     {
         $program = Program::findOrFail($id);
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $program->update($data);
         return $this->sendResponse(ProgramResource::make($program), 'Successfully.');
     }

@@ -10,6 +10,7 @@ use App\Http\Resources\IntensionResource;
 use App\Models\Intensions;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IntensionController extends BaseController
 {
@@ -22,6 +23,7 @@ class IntensionController extends BaseController
     public function create(IntensionRequest $request): JsonResponse
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $intension = Intensions::create($data);
         return $this->sendResponse(IntensionResource::make($intension), 'Successfully.');
     }
@@ -31,6 +33,7 @@ class IntensionController extends BaseController
     {
         $intension = Intensions::findOrFail($id);
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $intension->update($data);
         return $this->sendResponse(IntensionResource::make($intension), 'Successfully.');
     }

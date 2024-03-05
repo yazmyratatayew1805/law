@@ -22,7 +22,6 @@ class ProgramRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
             'name' => 'required',
             'total' => 'required',
             'total_completed' => 'required',

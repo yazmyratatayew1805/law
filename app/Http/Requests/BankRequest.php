@@ -22,7 +22,6 @@ class BankRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
             'currency_id' => 'required',
             'amount' => 'required',
         ];

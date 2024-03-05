@@ -10,6 +10,7 @@ use App\Http\Resources\BankResource;
 use App\Models\Bank;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BankController extends BaseController
 {
@@ -22,6 +23,7 @@ class BankController extends BaseController
     public function create(BankRequest $request): JsonResponse
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $bank = Bank::create($data);
         return $this->sendResponse(BankResource::make($bank), 'Successfully.');
     }
@@ -31,6 +33,7 @@ class BankController extends BaseController
     {
         $bank = Bank::findOrFail($id);
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $bank->update($data);
         return $this->sendResponse(BankResource::make($bank), 'Successfully.');
     }
