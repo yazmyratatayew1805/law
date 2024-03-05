@@ -22,7 +22,6 @@ class BeliefRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
             'name' => 'required|array',
             'start_date' => 'required',
             'last_complate_date' => 'required',

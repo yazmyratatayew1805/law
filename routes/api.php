@@ -37,7 +37,7 @@ Route::prefix('v1')->group(function () {
 
         });
 
-
+        Route::middleware('auth:sanctum')->group( function () {
             // intension crud
             Route::get('intension/index', [IntensionController::class, 'index']);
             Route::post('intension/create', [IntensionController::class, 'create']);
@@ -71,6 +71,7 @@ Route::prefix('v1')->group(function () {
 
             Route::post('chat/gpt', [GptController::class, 'chat']);
 
+        });
 
 
     });

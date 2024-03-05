@@ -12,6 +12,7 @@ use App\Http\Resources\IntensionResource;
 use App\Models\Belief;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BeliefController extends BaseController
 {
@@ -24,6 +25,7 @@ class BeliefController extends BaseController
     public function create(BeliefRequest $request): JsonResponse
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $belief = Belief::create($data);
         return $this->sendResponse(BeliefResource::make($belief), 'Successfully.');
     }
@@ -33,6 +35,7 @@ class BeliefController extends BaseController
     {
         $belief = Belief::findOrFail($id);
         $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
         $belief->update($data);
         return $this->sendResponse(BeliefResource::make($belief), 'Successfully.');
     }
