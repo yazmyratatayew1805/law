@@ -27,6 +27,7 @@ class IntensionRequest extends FormRequest
             'last_complate_date' => 'required',
             'end_date' => 'nullable',
             'percent' => 'nullable',
+            'is_сontinues' => 'nullable',
         ];
     }
 }

@@ -22,6 +22,7 @@ class BeliefResource extends JsonResource
             'last_complate_date' => $this->last_complate_date,
             'end_date' => $this->end_date,
             'percent' => $this->percent,
+            'is_сontinues' => $this->is_сontinues,
         ];
     }
 }

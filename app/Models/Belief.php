@@ -15,6 +15,7 @@ class Belief extends Model
         'last_complate_date',
         'end_date',
         'percent',
+        'is_сontinues',
     ];
 
     protected $casts = [

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('last_complate_date');
             $table->date('end_date')->nullable();
             $table->integer('percent')->nullable();
+            $table->boolean('is_сontinues')->nullable();
             $table->timestamps();
         });
     }
