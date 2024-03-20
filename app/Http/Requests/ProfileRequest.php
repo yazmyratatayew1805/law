@@ -24,6 +24,7 @@ class ProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|exists:users,email',
+            'last_visited_day' => 'nullable',
         ];
     }
 }
